@@ -10,7 +10,7 @@ run:
 	sudo docker run -it --name ${NAME} -p '22:22' ${NAME} /bin/bash
 
 grun:
-	sudo docker run --gpus all -it --name ${NAME} -p '22:22' ${NAME} /bin/bash
+	sudo docker run --net host --gpus all -it --name ${NAME} -p '22:22' ${NAME} /bin/bash
 
 kill:
 	sudo docker container prune && sudo docker image prune

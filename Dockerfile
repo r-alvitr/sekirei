@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 ENV HOME=/alvitr
+ENV DISPLAY=:0.0
 
 WORKDIR ${HOME}
 
@@ -19,9 +20,6 @@ RUN echo 'root:littlebird' | chpasswd && \
   echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config
 # clean up
 RUN apt-get clean -y
-
-ENV JAVA_VERSION jdk-11.0.5+10
-ENV JAVA_HOME=/opt/java/openjdk PATH="/opt/java/openjdk/bin:$PATH"
 
 USER 0
 
