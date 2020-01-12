@@ -1,6 +1,7 @@
 FROM ubuntu:18.04
 
 ENV HOME=/alvitr \
+  MINECRAFT=/alvitr/Minecraft \
   INST_SCRIPTS=/alvitr/install
 
 ADD ./src/setup_jdk.sh ${INST_SCRIPTS}/
@@ -11,6 +12,8 @@ RUN apt-get update && \
   chmod a+x ${INST_SCRIPTS}/*.sh && \
   # jdk setup
   ${INST_SCRIPTS}/setup_jdk.sh && \
+  # minecraft
+  curl https://launcher.mojang.com/download/Minecraft.deb | apt install && \
   # clean up
   apt-get clean -y
 
