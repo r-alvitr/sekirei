@@ -6,7 +6,7 @@ ENV HOME=/alvitr \
 ADD ./src/setup_jdk.sh ${INST_SCRIPTS}/
 
 RUN apt-get update && \
-  apt-get install -y curl wget ca-certificates && \
+  apt-get install -y curl wget ca-certificates openssh-server && \
   # permission
   chmod a+x ${INST_SCRIPTS}/*.sh && \
   # jdk setup
