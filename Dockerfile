@@ -1,19 +1,18 @@
 FROM ubuntu:18.04
 
 ENV HOME=/alvitr \
-  MINECRAFT=/alvitr/Minecraft \
   INST_SCRIPTS=/alvitr/install
 
 ADD ./src/setup_jdk.sh ${INST_SCRIPTS}/
 
 RUN apt-get update && \
-  apt-get install -y curl ca-certificates && \
+  apt-get install -y curl wget ca-certificates && \
   # permission
   chmod a+x ${INST_SCRIPTS}/*.sh && \
   # jdk setup
   ${INST_SCRIPTS}/setup_jdk.sh && \
   # minecraft
-  curl https://launcher.mojang.com/download/Minecraft.deb | apt install && \
+  wget "https://launcher.mojang.com/download/Minecraft.deb" && dpkg -i --force-depends Minecraft.deb && apt install -f -y && \
   # clean up
   apt-get clean -y
 
