@@ -19,6 +19,9 @@ RUN apt-get update && \
   # VirtualGL
   wget "https://jaist.dl.sourceforge.net/project/virtualgl/2.6.3/virtualgl_2.6.3_amd64.deb" && dpkg -i --force-depends virtualgl_2.6.3_amd64.deb && apt install -f -y && \
   /opt/VirtualGL/bin/vglserver_config -config +s +f -t && \
+  # ssh env
+  echo 'root:littlebird' | chpasswd && \
+  echo 'PermitRootLogin yes' >> /etc/ssh/sshd_config && \
   # clean up
   apt-get clean -y
 
