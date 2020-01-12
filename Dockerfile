@@ -14,6 +14,7 @@ RUN apt-get update && \
   # Minecraft
   wget "https://launcher.mojang.com/download/Minecraft.deb" && dpkg -i --force-depends Minecraft.deb && apt install -f -y && \
   # VirtualGL
+  wget "https://jaist.dl.sourceforge.net/project/virtualgl/2.6.3/virtualgl_2.6.3_amd64.deb" && dpkg -i --force-depends virtualgl_2.6.3_amd64.deb && apt install -f -y && \
   # clean up
   apt-get clean -y
 
