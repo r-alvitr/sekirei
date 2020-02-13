@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sekirei-deployment
+spec:
+  selector:
+    matchLabels:
+      app: sekirei
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: sekirei
+    spec:
+      containers:
+        - name: sekirei
+          image: docker-registry.millenary.net/sekirei:inspection
+          command: ["/usr/sbin/sshd"]
+          args: ["-D", "-p", "2222"]
+          ports:
+            - containerPort: 2222
